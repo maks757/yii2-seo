@@ -1,0 +1,21 @@
+{
+  "name": "black-lamp/yii2-seo",
+  "description": "The Gii extension for the Yii framework",
+  "keywords": ["yii2", "gii", "code generator"],
+  "version": "0.0.1",
+  "type": "yii2-extension",
+  "authors": [
+    {
+      "name": "Gutsulyak Vadim",
+      "email": "guts.vadim@gmail.com"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": ">=2.0.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "bl\\seo\\": ""
+    }
+  }
+}
