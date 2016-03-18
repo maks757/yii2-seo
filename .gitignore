@@ -6,6 +6,7 @@ gen
 
 # Composer
 composer.phar
+composer.lock
 
 # Pachages
 /vendor
