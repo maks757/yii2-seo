@@ -25,7 +25,6 @@ class SeoDataBehavior extends Behavior
         $this->getSeoData();
     }
 
-
     public function getSeoTitle() {
         return $this->seoData->title;
     }
@@ -48,6 +47,14 @@ class SeoDataBehavior extends Behavior
 
     public function setSeoKeywords($keywords) {
         $this->seoData->keywords = $keywords;
+    }
+
+    public function getSeoUrl() {
+        return $this->seoData->seo_url;
+    }
+
+    public function setSeoUrl($seoUrl) {
+        $this->seoData->seo_url = $seoUrl;
     }
 
     public function events()
