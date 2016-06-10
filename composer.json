@@ -2,7 +2,6 @@
   "name": "black-lamp/yii2-seo",
   "description": "SEO extension for the Yii framework",
   "keywords": ["yii2", "seo"],
-  "version": "0.1",
   "type": "yii2-extension",
   "authors": [
     {
