@@ -1,5 +1,5 @@
 {
-  "name": "black-lamp/yii2-seo",
+  "name": "maks757/yii2-seo",
   "description": "SEO extension for the Yii framework",
   "keywords": ["yii2", "seo"],
   "type": "yii2-extension",
@@ -7,6 +7,10 @@
     {
       "name": "Gutsulyak Vadim",
       "email": "guts.vadim@gmail.com"
+    },
+    {
+      "name": "Cherednyk Maxim",
+      "email": "maks757q@gmail.com"
     }
   ],
   "require": {
@@ -14,7 +18,7 @@
   },
   "autoload": {
     "psr-4": {
-      "bl\\seo\\": ""
+      "maks757\\seo\\": ""
     }
   }
 }
