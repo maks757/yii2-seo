@@ -88,12 +88,12 @@ class SeoDataBehavior extends Behavior
             $this->seoData->entity_id = $this->owner->getPrimaryKey();
             $this->seoData->entity_name = $this->owner->className();
         }
-        
+
         $name_field = $this->generation_field;
-        if($this->generation && empty($this->getSeoUrl()) && !empty($this->owner->$name_field)) {
+        if(!empty($this->seoData) && $this->generation && empty($this->getSeoUrl()) && !empty($this->owner->$name_field)) {
             if(empty($this->generation_field))
                 throw new ConfigurationException('field `generation_field` the empty');
-            $url = str_replace(' ', '-', preg_replace('/[^a-zA-ZА-Яа-я0-9\sчЧсСхХтТьЬрРюЮэЭыЫіІуУшШ]/', '', $this->owner->$name_field));
+            $url = str_replace(' ', '-', preg_replace('/[^a-zA-ZА-Яа-я0-9\sчЧсСхХтТьЬрРюЮэЭыЫіІуУшШ]/', '', trim($this->owner->$name_field)));
             $this->setSeoUrl($url);
         }
         $this->seoData->save();
