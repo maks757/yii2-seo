@@ -96,6 +96,13 @@ class SeoDataBehavior extends Behavior
             $url = str_replace(' ', '-', preg_replace('/[^a-zA-ZА-Яа-я0-9\sчЧсСхХтТьЬрРюЮэЭыЫіІуУшШ]/', '', trim($this->owner->$name_field)));
             $this->setSeoUrl($url);
         }
+
+        if(!empty($this->seoData) && $this->generation && empty($this->getSeoTitle()) && !empty($this->owner->$name_field)) {
+            if(empty($this->generation_field))
+                throw new ConfigurationException('field `generation_field` the empty');
+            $this->setSeoTitle(trim($this->owner->$name_field));
+        }
+
         $this->seoData->save();
     }
 }
