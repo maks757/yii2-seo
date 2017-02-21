@@ -1,5 +1,5 @@
 <?php
-namespace bl\seo\entities;
+namespace maks757\seo\entities;
 
 use yii\db\ActiveRecord;
 

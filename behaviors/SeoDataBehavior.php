@@ -1,7 +1,8 @@
 <?php
-namespace bl\seo\behaviors;
+namespace maks757\seo\behaviors;
 
-use bl\seo\entities\SeoData;
+use maks757\seo\entities\SeoData;
+use Codeception\Exception\ConfigurationException;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
 use yii\db\BaseActiveRecord;
@@ -19,6 +20,9 @@ class SeoDataBehavior extends Behavior
      * @var seoData SeoData
      */
     private $seoData;
+
+    public $generation = true;
+    public $generation_field = 'name';
 
     public function init()
     {
@@ -83,6 +87,13 @@ class SeoDataBehavior extends Behavior
         if(empty($this->seoData->entity_id)) {
             $this->seoData->entity_id = $this->owner->getPrimaryKey();
             $this->seoData->entity_name = $this->owner->className();
+        }
+        if($this->generation && empty($this->getSeoUrl())) {
+            if(empty($this->generation_field))
+                throw new ConfigurationException('field `generation_field` the empty');
+            $name_field = $this->generation_field;
+            $url = str_replace(' ', '-', preg_replace('/[^a-zA-ZА-Яа-я0-9\sчЧсСхХтТьЬрРюЮэЭыЫіІуУшШ]/', '', $this->owner->$name_field));
+            $this->setSeoUrl($url);
         }
         $this->seoData->save();
     }
