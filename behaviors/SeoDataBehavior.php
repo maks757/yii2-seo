@@ -1,6 +1,7 @@
 <?php
 namespace maks757\seo\behaviors;
 
+use dosamigos\transliterator\TransliteratorHelper;
 use maks757\seo\entities\SeoData;
 use Codeception\Exception\ConfigurationException;
 use yii\base\Behavior;
@@ -83,23 +84,32 @@ class SeoDataBehavior extends Behavior
         }
     }
 
+    /**
+     * @param $event
+     * @throws ConfigurationException
+     */
     public function saveSeoData($event) {
         if(empty($this->seoData->entity_id)) {
             $this->seoData->entity_id = $this->owner->getPrimaryKey();
-            $this->seoData->entity_name = $this->owner->className();
+            $this->seoData->entity_name = md5(get_class($this->owner));
         }
 
         $name_field = $this->generation_field;
-        if(!empty($this->seoData) && $this->generation && empty($this->getSeoUrl()) && !empty($this->owner->$name_field)) {
-            if(empty($this->generation_field))
+        $seo_url = $this->getSeoUrl();
+        $seo_title = $this->getSeoTitle();
+
+        if(!empty($this->seoData) && $this->generation && empty($seo_url) && !empty($this->owner->$name_field)) {
+            if(empty($this->generation_field)) {
                 throw new ConfigurationException('field `generation_field` the empty');
-            $url = str_replace(' ', '-', preg_replace('/[^a-zA-ZА-Яа-я0-9\sчЧсСхХтТьЬрРюЮэЭыЫіІуУшШ]/', '', trim($this->owner->$name_field)));
+            }
+            $url = TransliteratorHelper::process(trim(strtolower($this->owner->$name_field)), '-', 'en');
             $this->setSeoUrl($url);
         }
 
-        if(!empty($this->seoData) && $this->generation && empty($this->getSeoTitle()) && !empty($this->owner->$name_field)) {
-            if(empty($this->generation_field))
+        if(!empty($this->seoData) && $this->generation && empty($seo_title) && !empty($this->owner->$name_field)) {
+            if(empty($this->generation_field)) {
                 throw new ConfigurationException('field `generation_field` the empty');
+            }
             $this->setSeoTitle(trim($this->owner->$name_field));
         }
 
