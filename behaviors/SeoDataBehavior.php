@@ -102,7 +102,7 @@ class SeoDataBehavior extends Behavior
             if(empty($this->generation_field)) {
                 throw new ConfigurationException('field `generation_field` the empty');
             }
-            $url = TransliteratorHelper::process(trim(strtolower($this->owner->$name_field)), '-', 'en');
+            $url = strtolower(TransliteratorHelper::process(trim($this->owner->$name_field), '-', 'en'));
             $this->setSeoUrl($url);
         }
 
