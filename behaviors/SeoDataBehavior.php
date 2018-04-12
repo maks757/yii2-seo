@@ -75,7 +75,7 @@ class SeoDataBehavior extends Behavior
         if($this->owner != null) {
             $this->seoData = SeoData::findOne([
                 'entity_id' => $this->owner->getPrimaryKey(),
-                'entity_name' => $this->owner->className()
+                'entity_name' => md5(get_class($this->owner))
             ]);
         }
 
