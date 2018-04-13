@@ -38,6 +38,14 @@ class SeoDataBehavior extends Behavior
         $this->seoData->title = $title;
     }
 
+    public function getSeoContent() {
+        return $this->seoData->seo_content;
+    }
+
+    public function setSeoContent($content) {
+        $this->seoData->seo_content = $content;
+    }
+
     public function getSeoDescription() {
         return $this->seoData->description;
     }

@@ -14,6 +14,7 @@ class m160314_142552_seo_data extends Migration
             'title' => $this->string(255),
             'keywords' => $this->string(512),
             'description' => $this->string(1024),
+            'seo_content' => $this->text(),
             'meta_robots_id' => $this->integer()
         ]);
 
