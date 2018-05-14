@@ -24,9 +24,9 @@ public function rules()
 {
     return [
         //...
-        [['seo_url', 'seo_title',], 'string', 'max' => 255],
-        [['seo_keywords',], 'string', 'max' => 512],
-        [['seo_description',], 'string', 'max' => 1024],
+        [['seoUrl', 'seoTitle',], 'string', 'max' => 255],
+        [['seoKeywords',], 'string', 'max' => 512],
+        [['seoDescription',], 'string', 'max' => 1024],
     ];
 }
 ```
@@ -35,18 +35,18 @@ you can add properties
 
 ```php
 /**
- * @property string $seo_url
- * @property string $seo_title
- * @property string $seo_keywords
- * @property string $seo_descriptin
+ * @property string $seoUrl
+ * @property string $seoTitle
+ * @property string $seoKeywords
+ * @property string $seoDescriptin
  */
 ```
 
 and add input to form 
 
 ```php
-<?= $form->field($model, 'seo_title')->textInput() ?>
-<?= $form->field($model, 'seo_url')->textInput() ?>
-<?= $form->field($model, 'seo_keywords')->textarea() ?>
-<?= $form->field($model, 'seo_description')->textarea() ?>
+<?= $form->field($model, 'seoUrl')->textInput() ?>
+<?= $form->field($model, 'seoTitle')->textInput() ?>
+<?= $form->field($model, 'seoDescription')->textarea() ?>
+<?= $form->field($model, 'seoKeywords')->textarea() ?>
 ```
