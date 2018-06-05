@@ -10,10 +10,10 @@ class m160314_142552_seo_data extends Migration
             'id' => $this->primaryKey(),
             'entity_id' =>  $this->string(255)->notNull(),
             'entity_name' => $this->string(255)->notNull(),
-            'seo_url' => $this->string(255),
-            'title' => $this->string(255),
-            'keywords' => $this->string(512),
-            'description' => $this->string(1024),
+            'seo_url' => $this->text(),
+            'title' => $this->text(),
+            'keywords' => $this->text(),
+            'description' => $this->text(),
             'seo_content' => $this->text(),
             'meta_robots_id' => $this->integer()
         ]);
